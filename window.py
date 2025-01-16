@@ -23,7 +23,7 @@ class Window():
         self._is_running = False
 
     def draw_line(self, Line, fill_color):
-        Line.draw(self.__anvas, fill_color)
+        Line.draw(self._canvas, fill_color)
 
 class Point():
     def __init__(self, x, y):

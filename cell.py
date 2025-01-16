@@ -10,9 +10,14 @@ class Cell():
         self._y1 = None
         self._x2 = None
         self._y2 = None
+        self.visited = False
         self._canvas = Canvas
 
     def draw(self, x1, y1, x2, y2):
+        self._x1 = x1
+        self._y1 = y1
+        self._x2 = x2
+        self._y2 = y2
         point_tl = Point(x1, y1)
         point_tr = Point(x2, y1)
         point_bl = Point(x1, y2)
@@ -21,18 +26,30 @@ class Cell():
         if self.has_left_wall:
             line_left = Line(point_bl, point_tl)
             self._canvas.draw_line(line_left, "black")
+        else:
+            line_left = Line(point_bl, point_tl)
+            self._canvas.draw_line(line_left, "grey")
 
         if self.has_right_wall:
             line_right = Line(point_br, point_tr)
             self._canvas.draw_line(line_right, "black")
+        else:
+            line_right = Line(point_br, point_tr)
+            self._canvas.draw_line(line_right, "grey")
 
         if self.has_top_wall:
             line_top = Line(point_tl, point_tr)
             self._canvas.draw_line(line_top, "black")
+        else:
+            line_top = Line(point_tl, point_tr)
+            self._canvas.draw_line(line_top, "grey")
 
         if self.has_bottom_wall:
             line_bottom = Line(point_bl, point_br)
             self._canvas.draw_line(line_bottom, "black")
+        else:
+            line_bottom = Line(point_bl, point_br)
+            self._canvas.draw_line(line_bottom, "grey")
 
     def get_midpoint(self):
         midpoint_self_x = (self._x1 + self._x2) // 2
@@ -44,7 +61,7 @@ class Cell():
         mid_cell = to_cell.get_midpoint()
         line = Line(mid_self,mid_cell)
         if undo:
-            color = "grey"
+            color = "white"
         else:
             color = "red"
         self._canvas.draw_line(line,color)
