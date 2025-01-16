@@ -10,6 +10,9 @@ class Window():
         self._is_running = False
         self._root.protocol("WM_DELETE_WINDOW", self.close)
         
+    def clear(self):
+        self._canvas.delete("all")
+        
     def redraw(self):
         self._root.update_idletasks()
         self._root.update()
