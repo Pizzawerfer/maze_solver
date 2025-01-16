@@ -33,3 +33,18 @@ class Cell():
         if self.has_bottom_wall:
             line_bottom = Line(point_bl, point_br)
             self.__canvas.draw_line(line_bottom, "black")
+
+    def get_midpoint(self):
+        midpoint_self_x = (self.__x1 + self.__x2) / 2
+        midpoint_self_y = (self.__y1 + self.__y2) / 2
+        return Point(midpoint_self_x, midpoint_self_y)
+
+    def draw_move(self, to_cell, undo=False):
+        mid_self = self.get_midpoint()
+        mid_cell = to_cell.get_midpoint()
+        line = Line(mid_self,mid_cell)
+        if undo:
+            color = "grey"
+        else:
+            color = "red"
+        self.__canvas.draw_line(line,color)

@@ -15,5 +15,7 @@ def main():
     cell1.draw()
     cell2.draw()
     cell3.draw()
+    cell1.draw_move(cell2)
+    cell2.draw_move(cell3, True)
     win.wait_for_close()
 main()

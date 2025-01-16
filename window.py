@@ -4,9 +4,9 @@ from constants import *
 class Window():
     def __init__(self, width, height):
         self.__root = Tk()
-        self.__root.title = "Title"
-        self.__canvas = Canvas(width=width,height=height)
-        self.__canvas.pack()
+        self.__root.title("Maze Solver")
+        self.__canvas = Canvas(self.__root, bg="white", width=width,height=height)
+        self.__canvas.pack(fill=BOTH, expand=1)
         self.__is_running = False
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
         
